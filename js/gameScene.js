@@ -35,7 +35,7 @@ class Game extends Phaser.Scene {
         },
       )
       .setOrigin(0.5);
-
+//asdf
     this.load.image("wheelFrame", `${gitHubUrl}spin/wheelFrame.png`);
     this.load.image("logo", `${gitHubUrl}spin/logo.png`);
     this.load.image("spark", `${gitHubUrl}spin/spark.png`);
