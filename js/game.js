@@ -1,5 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const name = params.get("name");
+// const name = "Crowngreen";
 
 const brands = [
   {
@@ -77,12 +78,9 @@ class startScene extends Phaser.Scene {
       .setOrigin(0.5);
 
     this.load.image("wheelFrame", `${gitHubUrl}spin/wheelFrame.png`);
-    this.load.image("logo", `${gitHubUrl}spin/logo.png`);
     this.load.image("spark", `${gitHubUrl}spin/spark.png`);
     this.load.image("wheelBg", `${gitHubUrl}spin/wheelBg.png`);
     this.load.image("tulip", `${gitHubUrl}spin/tulip.png`);
-    this.load.image("win", `${gitHubUrl}spin/win.png`);
-    this.load.image("lose", `${gitHubUrl}spin/lose.png`);
     this.load.image("C7", `${gitHubUrl}spin/7.png`);
     this.load.image("BG", `${gitHubUrl}spin/blueGem.png`);
     this.load.image("bell", `${gitHubUrl}spin/bell.png`);
@@ -109,7 +107,6 @@ class startScene extends Phaser.Scene {
     this.load.audio("spinning", `${gitHubUrl}sounds/spinning.mp3`);
     this.load.audio("bgaudio", `${gitHubUrl}sounds/bgaudio.mp3`);
     this.load.audio("congrats", `${gitHubUrl}sounds/congrats2.mp3`);
-    this.load.audio("lost", `${gitHubUrl}sounds/lose-sound.mp3`);
 
     this.load.on("progress", (value) => {
       this.loadingText.setText(`Loading: ${Math.round(value * 100)}%`);
@@ -548,11 +545,11 @@ class GameMobile extends Phaser.Scene {
 
     this.wheel = this.createWheel(this, halfWidth, halfHeight, 178);
     this.wheelCover = this.add
-      .image(halfWidth + 24, halfHeight * 1.175, "wheelFrame")
+      .image(halfWidth + 24, halfHeight + 76, "wheelFrame")
       .setAlpha(1)
       .setScale(0.71);
     this.wheelName = this.add
-      .text(halfWidth, height * 0.76, name, {
+      .text(halfWidth, halfHeight + 220, name, {
         fontFamily: "RakeslyRG",
         fontSize: "30px",
         fontStyle: "bold",
@@ -1543,8 +1540,6 @@ class GameMobile extends Phaser.Scene {
       loop: true,
     });
 
-    this.lostSound = this.sound.add("lost");
-    this.lostSound.setVolume(0.1);
     this.congratsSound = this.sound.add("congrats");
     this.congratsSound.setVolume(0.2);
   }
@@ -2709,7 +2704,7 @@ class Game extends Phaser.Scene {
     let win = this.add
       .image(0, height * 0.18, "prize")
       .setOrigin(0.5, 1)
-      .setScale(0.55);
+      .setScale(0.5);
 
     win.postFX.addGlow(0xffd700, 3, 0, false, 0.6, 15);
 
@@ -2731,7 +2726,7 @@ class Game extends Phaser.Scene {
 
     let claimBtn = this.add
       .image(0, height * 0.24, "claim")
-      .setScale(0.4)
+      .setScale(0.38)
       .setDepth(Infinity)
       .setInteractive({ useHandCursor: true });
 
@@ -2744,14 +2739,14 @@ class Game extends Phaser.Scene {
         this.clicked = true;
         this.tweens.add({
           targets: claimBtn,
-          scaleX: 0.38,
-          scaleY: 0.38,
+          scaleX: 0.36,
+          scaleY: 0.36,
           duration: 100,
           onComplete: () => {
             this.tweens.add({
               targets: claimBtn,
-              scaleX: 0.4,
-              scaleY: 0.4,
+              scaleX: 0.38,
+              scaleY: 0.38,
               duration: 100,
               onComplete: () => {
                 this.clicked = false;
@@ -2986,8 +2981,6 @@ class Game extends Phaser.Scene {
       loop: true,
     });
 
-    this.lostSound = this.sound.add("lost");
-    this.lostSound.setVolume(0.1);
     this.congratsSound = this.sound.add("congrats");
     this.congratsSound.setVolume(0.2);
   }
