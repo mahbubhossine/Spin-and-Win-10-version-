@@ -1279,7 +1279,7 @@ class GameMobile extends Phaser.Scene {
     let win = this.add
       .image(0, height * 0.16, "prize")
       .setOrigin(0.5, 1)
-      .setScale(0.4);
+      .setScale(0.36);
 
     win.postFX.addGlow(0xffd700, 3, 0, false, 0.6, 15);
 
@@ -1302,7 +1302,7 @@ class GameMobile extends Phaser.Scene {
 
     let claimBtn = this.add
       .image(0, height * 0.24, "claim")
-      .setScale(0.35)
+      .setScale(0.32)
       .setDepth(Infinity)
       .setInteractive({ useHandCursor: true });
 
@@ -1315,14 +1315,14 @@ class GameMobile extends Phaser.Scene {
         this.clicked = true;
         this.tweens.add({
           targets: claimBtn,
-          scaleX: 0.32,
-          scaleY: 0.32,
+          scaleX: 0.3,
+          scaleY: 0.3,
           duration: 100,
           onComplete: () => {
             this.tweens.add({
               targets: claimBtn,
-              scaleX: 0.35,
-              scaleY: 0.35,
+              scaleX: 0.32,
+              scaleY: 0.32,
               duration: 100,
               onComplete: () => {
                 this.clicked = false;
@@ -1428,7 +1428,7 @@ class GameMobile extends Phaser.Scene {
     const shake = () => {
       this.tweens.add({
         targets: target,
-        scale: 0.38,
+        scale: 0.3,
         duration: 300,
         sine: "Sine.easeInOut",
         yoyo: true,
@@ -1438,7 +1438,7 @@ class GameMobile extends Phaser.Scene {
           this.time.delayedCall(300, () => {
             this.tweens.add({
               targets: target,
-              scale: 0.38,
+              scale: 0.3,
               sine: "Sine.easeInOut",
               duration: 300,
               yoyo: true,
