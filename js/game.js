@@ -50,10 +50,7 @@ const brands = [
 ];
 
 const selectedBrand = brands.find(
-  (brand) => {if(brand){
-    brand.name.toLowerCase() === name.toLowerCase()}
-             else{brand.name = "SpinBoss"}
-             }
+  (brand) => brand.name.toLowerCase() === name.toLowerCase(),
 );
 // golismo
 // MrPunter
