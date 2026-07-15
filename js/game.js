@@ -1,5 +1,8 @@
 const params = new URLSearchParams(window.location.search);
 const name = params.get("name");
+if(!name){
+  name = "SpinBoss"
+}
 // const name = "Crowngreen";
 
 const brands = [
